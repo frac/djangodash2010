@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     (r'^settings/', include('gramophorn.conf.urls')),
     (r'^records/', include('gramophorn.records.urls')),
     (r'^$', direct_to_template, {'template': "index.html"} ),
+    (r'^add/(?P<model>collection|album|person|label)/$', "gramophorn.records.views.add" ),
 
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
     # to INSTALLED_APPS to enable admin documentation:

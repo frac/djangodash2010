@@ -2,24 +2,49 @@
 
 {% block content %}
 
+<h2>Collections</h2>
 {% if collections %}
 {% for collection in collections %}
     {{ collection.title }}
 {% endfor %}
+{% else %}
+<p>
+There are no collections 
+</p>
 {% endif %}
- foo
+<p>
+<a href="/records/collection/new">Add a new collection</a>
+</p>
+
+
+<h2>Album</h2>
 {% if albums %}
 {% for album in albums %}
     {{ album.title }}
 {% endfor %}
+{% else %}
+<p>
+There are no albums 
+</p>
 {% endif %}
+<p>
+<a href="/records/album/new">Add a new album</a>
+</p>
 
 
+<h2>People</h2>
 {% if people %}
 {% for person in people %}
     {{ person.name }}
 {% endfor %}
+{% else %}
+<p>
+There are no people 
+</p>
 {% endif %}
+<p>
+<a href="/records/person/new">Add a new Person</a>
+</p>
 
 
 {% endblock %}

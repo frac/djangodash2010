@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block head%}
+<script type="text/javascript" src="/media/js/admin/RelatedObjectLookups.js"></script>
+{% endblock%}
+
+{% block content %}
+
+{% if ok %}
+<br/>
+<h3>{{model|title}} created</h3>
+{% endif %}
+
+<h2>{{model|title}}</h2>
+
+<form method="post" action=".">
+{% csrf_token %} 
+
+<table>
+{{form}}
+</table>
+
+<input type="submit" value="Save and add another"> |
+<input type="submit" value="Add Related"> |
+<a href="/records/">Back</a>
+</form>
+{% endblock %}
