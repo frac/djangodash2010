@@ -2,7 +2,7 @@
 from lettuce import step, world
 
 @step(u'Given I have (a|an) (.*) model')
-def given_i_have_a_model(step, article, model):
+def given_i_have_a_model(step, article , model):
     try:
         foo = __import__("gramophorn.records.models", globals(), locals(), [model,], -1)
         real = getattr(foo, model)
