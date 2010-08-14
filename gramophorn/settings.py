@@ -101,11 +101,14 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
 
-    'south',
+    #'south',
     'django_nose',
     'test_extensions',
     'test_utils',
-    'lettuce.django'
+    'lettuce.django',
+    'records',
+    'search',
+    'storage',
 )
 
 NOSE_ARGS = []
