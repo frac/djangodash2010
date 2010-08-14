@@ -1,18 +1,27 @@
 # Django settings for gramophorn project.
 
-DEBUG = True
+
+
+import os
+import sys
+
+PROJECT_PATH = os.path.abspath(os.path.split(__file__)[0])
+
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
 ADMINS = (
-    # ('Your Name', 'your_email@domain.com'),
+    # ('Adriano', 'your_email@domain.com'),
 )
 
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '',                      # Or path to database file if using sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'db/database.db',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -45,7 +54,7 @@ USE_L10N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = os.path.join(PROJECT_PATH,'media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
@@ -91,4 +100,19 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
+
+    'south',
+    'django_nose',
+    'test_extensions',
+    'test_utils',
+    'lettuce.django'
 )
+
+NOSE_ARGS = []
+
+try:
+    execfile(PROJECT_PATH+'/settings_local.py')
+    #print 'Using LOCAL conf'
+except IOError:
+    #print 'Using standart conf'
+    pass
