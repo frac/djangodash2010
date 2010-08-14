@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if collections %}
+{% for collection in collections %}
+    {{ collection.title }}
+{% endfor %}
+{% endif %}
+ foo
+{% if albums %}
+{% for album in albums %}
+    {{ album.title }}
+{% endfor %}
+{% endif %}
+
+
+{% if people %}
+{% for person in people %}
+    {{ person.name }}
+{% endfor %}
+{% endif %}
+
+
+{% endblock %}

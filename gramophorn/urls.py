@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     # Example:
     # (r'^gramophorn/', include('gramophorn.foo.urls')),
     (r'^settings/', include('gramophorn.conf.urls')),
+    (r'^records/', include('gramophorn.records.urls')),
     (r'^$', direct_to_template, {'template': "index.html"} ),
 
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 

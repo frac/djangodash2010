@@ -6,9 +6,9 @@ from django.test import Client
 def given_i_want_to_navigate_the_site(step):
     world.client = Client()
 
-@step(u'When I go to the homepage')
-def when_i_go_to_the_homepage(step):
-    world.resp = world.client.get("/")
+@step(u'When I go to the (.*)')
+def when_i_go_to_the_homepage(step, page):
+    world.resp = world.client.get(page)
 
 
 @step(u'Then I should see a working page')
