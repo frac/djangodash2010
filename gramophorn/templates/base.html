@@ -3,7 +3,19 @@
 </head>
 
 <body>
-{% block content %}
-{% endblock %}
+{% if is_installed %}
+    <a href="/">Catalog</a>|
+    <a href="/">Search</a>|
+    <a href="/">Organize</a>|
+    <a href="/">Statistics</a>| 
+    <a href="/settings/">Settings</a><br clear='all'>
+    {% block content %}
+    {% endblock %}
+{% else %}
+
+    <a href="/settings/install/">Install</a>
+    
+{% endif %}
+
 </body>
 </html>
