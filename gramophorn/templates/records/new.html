@@ -20,8 +20,10 @@
 {{form}}
 </table>
 
-<input type="submit" value="Save and add another"> |
-<input type="submit" value="Add Related"> |
+<input type="submit" value="Save"> |
+{% if model == 'collection' %}
+<input type="submit" name="related" value="Add Albums to this Collection"> |
+{% endif %}
 <a href="/records/">Back</a>
 </form>
 {% endblock %}

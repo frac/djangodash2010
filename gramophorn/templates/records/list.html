@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h2>Collections</h2>
+<h2>Last Cataloged Collections</h2>
 {% if collections %}
 {% for collection in collections %}
     {{ collection.title }}
@@ -17,7 +17,7 @@ There are no collections
 </p>
 
 
-<h2>Album</h2>
+<h2>Last Cataloged Albums</h2>
 {% if albums %}
 {% for album in albums %}
     {{ album.title }}
@@ -32,19 +32,6 @@ There are no albums
 </p>
 
 
-<h2>People</h2>
-{% if people %}
-{% for person in people %}
-    {{ person.name }}
-{% endfor %}
-{% else %}
-<p>
-There are no people 
-</p>
-{% endif %}
-<p>
-<a href="/records/person/new">Add a new Person</a>
-</p>
 
 
 {% endblock %}

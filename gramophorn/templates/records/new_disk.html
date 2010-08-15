@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block head%}
+<script type="text/javascript" src="/media/js/admin/RelatedObjectLookups.js"></script>
+{% endblock%}
+
+{% block content %}
+
+{% if ok %}
+<br/>
+<h3>Disk created</h3>
+{% endif %}
+
+<h2>{{model|title}}</h2>
+
+<form method="post" action=".">
+{% csrf_token %} 
+{{ formset.management_form }}
+
+{% for form in formset.forms %}
+<table style="float:left;">
+{{ form }}
+<tr><td><a href="/records/tracks/new/{{form.instance.id}}/">add tracks</a></td></tr>
+</table>
+{% endfor%}
+
+<br clear="all"/>
+<input type="submit" value="Save and add another Disk"> |
+<input type="submit" name="related" value="Add Another Album to this Collection"> |
+<input type="submit" name="related" value="Add Tracks to this Disk"> |
+<a href="/records/">Back</a>
+</form>
+{% endblock %}

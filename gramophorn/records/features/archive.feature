@@ -35,6 +35,7 @@ Feature: Main record things
         And the model has the following attributes
             | attr         |
             | album_id     |
+            | disk_num     |
             | disk_speed   |
             | disk_size    |
             | disk_type    |
@@ -50,7 +51,6 @@ Feature: Main record things
             | track_num      |
             | disk_side      |
             | duration       |
-            | date_recording |
             | notes          |
 
     Scenario: Credits exist

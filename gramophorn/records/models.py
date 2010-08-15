@@ -27,13 +27,13 @@ TYPES = [(0,"LP"), (1,"EP"), (2, "Single"), (3, "Maxi Single")]
 class Disk(models.Model):
     album = models.ForeignKey('Album')
     disk_num = models.IntegerField(default=1)
-    disk_speed = models.IntegerField(choices=SPEEDS)
-    disk_size  = models.IntegerField(choices=SIZES)
-    disk_type  = models.IntegerField(choices=TYPES)
+    disk_speed = models.IntegerField(choices=SPEEDS,null=True, blank=True, default=0)
+    disk_size  = models.IntegerField(choices=SIZES,null=True, blank=True, default=0)
+    disk_type  = models.IntegerField(choices=TYPES,null=True, blank=True, default=0)
     notes = models.CharField(max_length=256, null=True, blank=True)
     
     def __unicode__(self):
-        return u"disk %s"% self.disk_num
+        return u"%s disk %s"% (self.album.title, self.disk_num)
 
 SIDES = [(0,"Side A"), (1,"Side B")]
 
@@ -43,7 +43,6 @@ class Track(models.Model):
     track_num = models.IntegerField(null=True, blank=True)
     disk_side = models.IntegerField(choices=SIDES)
     duration = models.IntegerField(null=True, blank=True)
-    date_recording = models.DateField(null=True, blank=True)
     notes = models.CharField(max_length=256, null=True, blank=True)
 
     def __unicode__(self):
@@ -54,6 +53,9 @@ class Credit(models.Model):
     person = models.ForeignKey('Person')
     role = models.ForeignKey('Role')
     notes = models.CharField(max_length=256, null=True, blank=True)
+
+    def __unicode__(self):
+        return u"%s as %s"% (self.person.name, self.role.name)
 
 class Person(models.Model):
     name = models.CharField(max_length=256)
